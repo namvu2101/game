@@ -36,7 +36,9 @@ export default function RootLayout() {
     <GestureHandlerRootView>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
-          <Stack.Screen name="(games)" options={{ headerShown: false }} />
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(games)" />
+          <Stack.Screen name="(game2)" />
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="auto" />

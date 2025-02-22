@@ -12,6 +12,8 @@
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>NSMotionUsageDescription</key>
+    <string>A message that tells the user why the app is requesting access to the devices motion data.</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>

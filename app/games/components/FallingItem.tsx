@@ -24,13 +24,18 @@ const getRandomX = () => {
 };
 
 // Hàm tạo tốc độ rơi ngẫu nhiên (3s - 6s)
-const getRandomFallDuration = () => 1000 + Math.random() * 3000;
+const getRandomFallDuration = () => 2000 + Math.random() * 3000;
 
 // Hàm tạo tốc độ di chuyển ngang ngẫu nhiên (1s - 2s)
 const getRandomMoveDuration = () => 1000 + Math.random() * 1000;
 
 // Hàm tạo độ trễ ngẫu nhiên để vật thể không rơi cùng lúc
 const getRandomDelay = () => Math.random() * 2000;
+
+const DEG = ["0deg", "45deg", "90deg"];
+
+// Hàm chọn màu ngẫu nhiên
+const getRandomDeg = () => DEG[Math.floor(Math.random() * DEG.length)];
 
 export default function FallingObject({
   startX,
@@ -78,7 +83,7 @@ export default function FallingObject({
           duration: moveDuration,
           easing: Easing.linear,
         }),
-        withTiming(positionX.value + (Math.random() * MOVE_RANGE) / 2, {
+        withTiming(positionX.value + Math.random() * MOVE_RANGE * 1.5, {
           duration: moveDuration,
           easing: Easing.linear,
         })
@@ -116,7 +121,7 @@ export default function FallingObject({
         name="injection-syringe"
         size={OBJECT_SIZE}
         color={color}
-        style={{ transform: [{ rotateZ: "45deg" }] }}
+        style={{ transform: [{ rotateZ: getRandomDeg() }] }}
       />
     </Animated.View>
   );

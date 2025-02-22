@@ -3,8 +3,9 @@ import { useWatch } from "react-hook-form";
 import { Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export function Point() {
-  const point = useWatch({ name: "counts", exact: true });
+export default function Point() {
+  const point = useWatch({ name: "core", exact: true });
+  const color = useWatch({ name: "color", exact: true });
   const { top } = useSafeAreaInsets();
   return (
     <View
@@ -18,6 +19,9 @@ export function Point() {
     >
       <Text style={{ color: "#fff", fontSize: 20, fontWeight: "bold" }}>
         {point}
+      </Text>
+      <Text style={{ color: color, fontSize: 20, fontWeight: "bold" }}>
+        Your Color
       </Text>
     </View>
   );

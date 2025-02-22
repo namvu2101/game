@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Dimensions, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -8,9 +8,10 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import FallingObject from "./components/FallingItem";
-import { Point } from "./components/Point";
+import Point from "./components/Point";
 import { Ionicons } from "@expo/vector-icons";
-import { GameOver } from "./components/GameOver";
+import GameOver from "./components/GameOver";
+import { useNavigation } from "expo-router";
 
 const { width, height } = Dimensions.get("window");
 
@@ -28,6 +29,11 @@ const getRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
 const getRandomX = () => Math.random() * (width - OBJECT_SIZE);
 
 export default function Game() {
+  const { setOptions } = useNavigation();
+
+  useEffect(() => {
+    setOptions({ headerShown: false });
+  }, []);
   const playerX = useSharedValue(width / 2 - PLAYER_SIZE / 2);
   const playerY = useSharedValue(height - PLAYER_SIZE);
 
